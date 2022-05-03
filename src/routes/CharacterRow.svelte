@@ -29,23 +29,29 @@
     
 </script>
 
-<tr>
+<style>
+    tr:hover span.bg-base-300, tr.active span.bg-base-300 {
+        background-color: hsl(var(--b1, var(--b3)) / var(--tw-bg-opacity));
+    }
+</style>
+
+<tr class="hover hover:cursor-pointer">
     <td><img src="images/{classIcon}.png" alt="{classIcon}" width="32px" height="32px"> </td>
     <td class="text-accent font-bold">{character.name}</td>
     <td>
-        <span class="knob {dailyTask.chaos > 0 ? Colors.CHAOS : Colors.BASE}"></span>
-        <span class="knob {dailyTask.chaos > 1 ? Colors.CHAOS : Colors.BASE}"></span>
+        <span class="dot {dailyTask.chaos > 0 ? Colors.CHAOS : Colors.BASE}"></span>
+        <span class="dot {dailyTask.chaos > 1 ? Colors.CHAOS : Colors.BASE}"></span>
     </td>
     <td>
-        <span class="knob {dailyTask.guardian > 0 ? Colors.GUARDIAN : Colors.BASE}"></span>
-        <span class="knob {dailyTask.guardian > 1 ? Colors.GUARDIAN : Colors.BASE}"></span>
+        <span class="dot {dailyTask.guardian > 0 ? Colors.GUARDIAN : Colors.BASE}"></span>
+        <span class="dot {dailyTask.guardian > 1 ? Colors.GUARDIAN : Colors.BASE}"></span>
     </td>
     <td>
-        <span class="knob {dailyTask.una > 0 ? Colors.UNA : Colors.BASE}"></span>
-        <span class="knob {dailyTask.una > 1 ? Colors.UNA : Colors.BASE}"></span>
-        <span class="knob {dailyTask.una > 2 ? Colors.UNA : Colors.BASE}"></span>
+        <span class="dot {dailyTask.una > 0 ? Colors.UNA : Colors.BASE}"></span>
+        <span class="dot {dailyTask.una > 1 ? Colors.UNA : Colors.BASE}"></span>
+        <span class="dot {dailyTask.una > 2 ? Colors.UNA : Colors.BASE}"></span>
     </td>
     <td>
-        <span class="knob {dailyTask.donation ? Colors.DONATION : Colors.BASE}"></span>
+        <span class="dot {dailyTask.donation ? Colors.DONATION : Colors.BASE}"></span>
     </td>
 </tr>

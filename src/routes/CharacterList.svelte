@@ -28,7 +28,7 @@
     <table class="table w-full">
         
         <thead>
-        <tr class="font-bold">
+        <tr>
             <th>Class</th>
             <th>Name</th>
             <th>Chaos</th>
@@ -43,6 +43,12 @@
             <CharacterRow character="{char}" />
         {/each}
         </tbody>
+        
+        <tfoot>
+            <tr>
+                <td colspan="6"><button class="btn btn-accent btn-sm">Add new</button></td>
+            </tr>
+        </tfoot>
 
     </table>
 
