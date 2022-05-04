@@ -3,6 +3,9 @@
     import type {Character} from "../common-interfaces";
     import {CharacterClass} from "../common-enums";
     import CharacterRow from "./CharacterRow.svelte";
+    import {writable} from "svelte/store";
+    
+    const activeCharStore = writable('');
 
     const characters: Character[] = [
         {
@@ -11,16 +14,20 @@
             class: CharacterClass.BERSERKER,
         },
         {
-            id: 'id3',
+            id: 'id2',
             name: 'Assasickae',
             class: CharacterClass.DEATHBLADE,
         },
         {
-            id: 'id2',
+            id: 'id3',
             name: 'Chellerae',
             class: CharacterClass.GUNLANCER,
         },
-    ] 
+    ];
+    
+    function onCharSelected(event: CustomEvent): void {
+        activeCharStore.set(event.detail);
+    }
 </script>
 
 <div class="hero w-1/3 mx-2">
@@ -40,7 +47,7 @@
         
         <tbody>
         {#each characters as char}
-            <CharacterRow character="{char}" />
+            <CharacterRow character="{char}" activeCharStore on:character-select={onCharSelected} />
         {/each}
         </tbody>
         

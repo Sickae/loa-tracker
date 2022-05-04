@@ -1,8 +1,17 @@
 <script lang="ts">
     import type {Character, DailyTask} from "../common-interfaces";
     import {CharacterClass} from "../common-enums";
+    import {createEventDispatcher} from "svelte";
+    import {Writable} from "svelte/store";
+
 
     export let character: Character;
+    export let activeCharStore: Writable<string>;
+    
+    let activeCharId = character?.id;
+    activeCharStore?.subscribe(value => {
+        activeCharId = value;
+    });
     
     if (!character) {
         throw new Error('Invalid character')
@@ -25,17 +34,19 @@
         GUARDIAN = 'bg-info',
         DONATION = 'bg-yellow-500',
         UNA = 'bg-green-500',
-    };
+    }
+    
+    const dispatch = createEventDispatcher();
     
 </script>
 
 <style>
     tr:hover span.bg-base-300, tr.active span.bg-base-300 {
-        background-color: hsl(var(--b1, var(--b3)) / var(--tw-bg-opacity));
+        background-color: hsl(var(--b1, var(--b3)) / var(--tw-bg-opacity)) !important;
     }
 </style>
 
-<tr class="hover hover:cursor-pointer">
+<tr class="hover hover:cursor-pointer {activeCharId === character.id ? 'active' : ''}" on:click={dispatch('character-select', character.id)}>
     <td><img src="images/{classIcon}.png" alt="{classIcon}" width="32px" height="32px"> </td>
     <td class="text-accent font-bold">{character.name}</td>
     <td>
