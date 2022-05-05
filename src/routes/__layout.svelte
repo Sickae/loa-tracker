@@ -1,5 +1,12 @@
 <script lang="ts">
-    import '../app.css';
+    import '$lib/global.css';
+    import {selectedCharacterIdStore} from "$lib/stores/character";
+    
+    import {onMount} from "svelte";
+    
+    onMount(() => {
+        selectedCharacterIdStore.useLocalStorage();
+    });
 </script>
 
 <slot/>

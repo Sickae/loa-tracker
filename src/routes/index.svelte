@@ -1,5 +1,5 @@
 <script lang="ts">
-    import CharacterList from "$lib/CharacterList.svelte";
+    import CharacterList from "../lib/components/CharacterList.svelte";
 </script>
 
 <style>

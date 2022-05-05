@@ -1,7 +1,7 @@
 <script lang="ts">
 
-    import type {Character} from "../common-interfaces";
-    import {CharacterClass} from "../common-enums";
+    import type {Character} from "../../common-interfaces";
+    import {CharacterClass} from "../../common-enums";
     import CharacterRow from "./CharacterRow.svelte";
     
     const characters: Character[] = [
@@ -22,10 +22,6 @@
         },
     ];
     
-    let selectedCharId = characters[0].id;
-    function onCharSelected(event: CustomEvent): void {
-        selectedCharId = event.detail;
-    }
 </script>
 
 <div class="hero w-1/3 mx-2">
@@ -45,7 +41,7 @@
         
         <tbody>
         {#each characters as char}
-            <CharacterRow character="{char}" bind:selectedCharId={selectedCharId} activeCharStore on:character-select={onCharSelected} />
+            <CharacterRow character="{char}" />
         {/each}
         </tbody>
         

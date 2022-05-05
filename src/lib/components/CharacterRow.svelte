@@ -1,16 +1,13 @@
 <script lang="ts">
-    import type {Character, DailyTask} from "../common-interfaces";
-    import {CharacterClass} from "../common-enums";
-    import {createEventDispatcher} from "svelte";
+    import type {Character, DailyTask} from "../../common-interfaces";
+    import {CharacterClass} from "../../common-enums";
+    import {selectedCharacterIdStore} from "../stores/character";
 
     export let character: Character;
     
     if (!character) {
         throw new Error('Invalid character')
     }
-
-    export let selectedCharId = character.id;
-
 
     const classIcon = CharacterClass[character.class].toLowerCase();
     
@@ -31,7 +28,9 @@
         UNA = 'bg-green-500',
     }
     
-    const dispatch = createEventDispatcher();
+    function onSelect() {
+        selectedCharacterIdStore.set(character?.id);
+    }
     
 </script>
 
@@ -41,7 +40,7 @@
     }
 </style>
 
-<tr class="hover hover:cursor-pointer {selectedCharId === character.id ? 'active' : ''}" on:click={dispatch('character-select', character.id)}>
+<tr class="hover hover:cursor-pointer {$selectedCharacterIdStore === character.id ? 'active' : ''}" on:click={onSelect}>
     <td><img src="images/{classIcon}.png" alt="{classIcon}" width="32px" height="32px"> </td>
     <td class="text-accent font-bold">{character.name}</td>
     <td>
