@@ -1,5 +1,7 @@
 module.exports = {
     content: ['./src/routes/**/*.{svelte,js,ts}'],
+    purgeLayersByDefault: false,
+    removeDeprecatedGapUtilities: true,
     theme: {
         extend: {},
     },

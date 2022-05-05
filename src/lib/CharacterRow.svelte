@@ -2,21 +2,16 @@
     import type {Character, DailyTask} from "../common-interfaces";
     import {CharacterClass} from "../common-enums";
     import {createEventDispatcher} from "svelte";
-    import {Writable} from "svelte/store";
-
 
     export let character: Character;
-    export let activeCharStore: Writable<string>;
-    
-    let activeCharId = character?.id;
-    activeCharStore?.subscribe(value => {
-        activeCharId = value;
-    });
     
     if (!character) {
         throw new Error('Invalid character')
     }
-    
+
+    export let selectedCharId = character.id;
+
+
     const classIcon = CharacterClass[character.class].toLowerCase();
     
     const dailyTask: DailyTask = {
@@ -46,7 +41,7 @@
     }
 </style>
 
-<tr class="hover hover:cursor-pointer {activeCharId === character.id ? 'active' : ''}" on:click={dispatch('character-select', character.id)}>
+<tr class="hover hover:cursor-pointer {selectedCharId === character.id ? 'active' : ''}" on:click={dispatch('character-select', character.id)}>
     <td><img src="images/{classIcon}.png" alt="{classIcon}" width="32px" height="32px"> </td>
     <td class="text-accent font-bold">{character.name}</td>
     <td>
