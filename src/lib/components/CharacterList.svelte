@@ -1,27 +1,16 @@
 <script lang="ts">
 
-    import type {Character} from "../../common-interfaces";
-    import {CharacterClass} from "../../common-enums";
     import CharacterRow from "./CharacterRow.svelte";
+    import {characterStore} from "$lib/stores/characterStore";
+    import {CharacterClass} from "../common-enums";
     
-    const characters: Character[] = [
-        {
-            id: 'id1',
-            name: 'Sickae',
-            class: CharacterClass.BERSERKER,
-        },
-        {
-            id: 'id2',
-            name: 'Assasickae',
-            class: CharacterClass.DEATHBLADE,
-        },
-        {
-            id: 'id3',
-            name: 'Chellerae',
-            class: CharacterClass.GUNLANCER,
-        },
-    ];
-    
+    function onClickAdd() {
+        characterStore.add({
+            id: (Math.random() * 100000).toString(),
+            name: "New Character",
+            class: CharacterClass.GUNLANCER
+        });
+    }
 </script>
 
 <div class="hero w-1/3 mx-2">
@@ -40,14 +29,14 @@
         </thead>
         
         <tbody>
-        {#each characters as char}
+        {#each $characterStore as char}
             <CharacterRow character="{char}" />
         {/each}
         </tbody>
         
         <tfoot>
             <tr>
-                <td colspan="6"><button class="btn btn-accent btn-sm">Add new</button></td>
+                <td colspan="6"><button class="btn btn-accent btn-sm" on:click={onClickAdd} >Add new</button></td>
             </tr>
         </tfoot>
 
