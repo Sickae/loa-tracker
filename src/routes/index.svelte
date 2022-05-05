@@ -1,5 +1,6 @@
 <script lang="ts">
-    import CharacterList from "../lib/components/CharacterList.svelte";
+    import CharacterList from "$lib/components/CharacterList.svelte";
+    import CharacterDetails from "$lib/components/CharacterDetails.svelte";
 </script>
 
 <style>
@@ -13,7 +14,6 @@
 <div class="flex mt-5">
 
     <CharacterList />
-
-    <div class="hero bg-base-300 mx-2">asd</div>
+    <CharacterDetails />
 
 </div>

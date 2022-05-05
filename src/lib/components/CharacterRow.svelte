@@ -1,7 +1,7 @@
 <script lang="ts">
     import type {Character, DailyTask} from "../../common-interfaces";
     import {CharacterClass} from "../../common-enums";
-    import {selectedCharacterIdStore} from "../stores/character";
+    import {selectedCharacterIdStore} from "../stores/selectedCharacterId";
 
     export let character: Character;
     

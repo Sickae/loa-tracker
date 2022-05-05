@@ -2,4 +2,8 @@
     import CharacterDetailsHeader from "./CharacterDetailsHeader.svelte";
 </script>
 
-<CharacterDetailsHeader />
+<div class="hero bg-base-300 mx-2">
+    
+    <CharacterDetailsHeader />
+    
+</div>
