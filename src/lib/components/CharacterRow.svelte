@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
     import {writable} from "svelte/store";
-    
+
     const contextMenuIdStore = writable('');
     
 </script>
@@ -9,14 +9,13 @@
     import type {Character, DailyTask} from "$lib/common-interfaces";
     import {CharacterClass} from "$lib/common-enums";
     import {selectedCharacterStore} from "$lib/stores/selectedCharacterStore";
-    import {characterStore} from "../stores/characterStore";
-    import {get} from "svelte/store";
+    import {characterStore} from "$lib/stores/characterStore";
     import {Icon, Trash} from "svelte-hero-icons";
     
     export let character: Character;
     
     if (!character) {
-        throw new Error('Invalid character')
+        throw new Error('Character was not provided');
     }
 
     const classIcon = CharacterClass[character.class].toLowerCase();
@@ -47,7 +46,6 @@
     }
     
     function onRemove() {
-        console.log('remove clicked')
         characterStore.remove(character);
     }
     
@@ -57,10 +55,10 @@
     <td>
         {#if character.id === $contextMenuIdStore}
             <div on:click={onRemove}>
-                <Icon src="{Trash}" solid class="text-error hover:text-red-500" size="32" />
+                <Icon src="{Trash}" solid class="text-error hover:text-red-500 icon-glow-red" size="32" />
             </div>
         {:else}
-            <img src="images/{classIcon}.png" alt="{classIcon}" width="32px" height="32px">
+            <img src="images/{classIcon}.png" class="class-icon-glow" alt="{classIcon}" width="32px" height="32px">
         {/if}
     </td>
     <td class="text-accent font-bold">{character.name}</td>

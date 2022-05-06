@@ -1,6 +1,7 @@
 <script lang="ts">
     import CharacterList from "$lib/components/CharacterList.svelte";
     import CharacterDetails from "$lib/components/CharacterDetails.svelte";
+    import {selectedCharacterStore} from "$lib/stores/selectedCharacterStore";
 </script>
 
 <style>
@@ -14,6 +15,8 @@
 <div class="flex items-start mt-5">
 
     <CharacterList />
-    <CharacterDetails />
+    {#if $selectedCharacterStore}
+        <CharacterDetails />
+    {/if}
 
 </div>

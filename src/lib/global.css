@@ -23,3 +23,7 @@ h1 {
 .hero {
     border-radius: .5rem;
 }
+
+.class-icon-glow {
+    filter: drop-shadow(0 0 .5rem rgba(2, 217, 250, 0.8));
+}

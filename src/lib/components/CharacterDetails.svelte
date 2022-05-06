@@ -3,13 +3,20 @@
     import {selectedCharacterStore} from "$lib/stores/selectedCharacterStore";
 </script>
 
-<div class="hero bg-base-300 mx-2">
+<div id="details-hero" class="w-full bg-base-300 mx-2">
     <CharacterDetailsHeader character="{$selectedCharacterStore}" />
+
+    <div class="tabs">
+        <a class="tab tab-lifted">Chaos</a>
+        <a class="tab tab-lifted tab-active">Guardian Raid</a>
+        <a class="tab tab-lifted">Una's Taks</a>
+    </div>
 </div>
 
 <style>
-    div {
+    #details-hero {
         min-height: 81vh;
         max-height: 81vh;
+        border-radius: .5rem;
     }
 </style>

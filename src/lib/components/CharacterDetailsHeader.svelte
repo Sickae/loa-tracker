@@ -1,10 +1,31 @@
 <script lang="ts">
     import type {Character} from "$lib/common-interfaces";
+    import {CharacterClass} from "$lib/common-enums";
 
     export let character: Character;
+
+    let classIcon; 
     
-    console.log('ch', character)
+    $: {
+        classIcon = CharacterClass[character?.class]?.toLowerCase();
+    }
 </script>
 
-<h1>{character?.name ?? 'asd'}</h1>
+{#if character}
+    <div id="header" class="p-5 flex">
+        <img src="images/{classIcon}.png" class="class-icon-glow" alt="{classIcon}" />
+        <h1 class="text-accent font-bold my-auto mx-5">{character.name}</h1>
+    </div>
+{/if}
+
+<style>
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    #header {
+        height: 7rem;
+        font-family: default;
+    }
+</style>
 
