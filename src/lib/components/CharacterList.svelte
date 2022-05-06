@@ -2,7 +2,7 @@
 
     import CharacterRow from "./CharacterRow.svelte";
     import {characterStore} from "$lib/stores/characterStore";
-    import {CharacterClass} from "../common-enums";
+    import {CharacterClass} from "$lib/common-enums";
     
     function onClickAdd() {
         characterStore.add({
@@ -13,7 +13,7 @@
     }
 </script>
 
-<div class="hero w-1/3 mx-2">
+<div class="hero w-1/3 mx-2 mb-5">
 
     <table class="table w-full">
         

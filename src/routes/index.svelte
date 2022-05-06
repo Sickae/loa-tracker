@@ -11,7 +11,7 @@
     <h1 class="mx-5">LoaTracker</h1>
 </div>
 
-<div class="flex mt-5">
+<div class="flex items-start mt-5">
 
     <CharacterList />
     <CharacterDetails />

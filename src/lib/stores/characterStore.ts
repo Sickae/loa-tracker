@@ -14,20 +14,17 @@ function createCharacterStore(storageKey: string, initialValue: Character[]) {
         },
         remove: (character: Character) => {
             update(characters => {
+                console.log('removing', character);
                 return characters.filter(c => c.id !== character.id);
             });
         },
         useLocalStorage: () => {
-            const storage = localStorage.getItem(storageKey);
-            console.log('storage', storage);
-            const storedValue = JSON.parse(localStorage.getItem(storageKey) ?? '[]') as Character[];
-            console.log('storedValue', storedValue);
+            const storedValue = localStorage.getItem(storageKey);
             if (storedValue) {
-                set(storedValue);
+                set(JSON.parse(storedValue));
             }
 
             subscribe(value => {
-                console.log('saving to local storage', value);
                 localStorage.setItem(storageKey, JSON.stringify(value));
             });
         }
@@ -52,4 +49,4 @@ const DUMMY_DATA: Character[] = [
     },
 ];
     
-export const characterStore = createCharacterStore("characters", DUMMY_DATA);
+export const characterStore = createCharacterStore("characters", []);

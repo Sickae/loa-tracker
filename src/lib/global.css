@@ -19,3 +19,7 @@ h1 {
     width: 1rem;
     border-radius: 9999px;
 }
+
+.hero {
+    border-radius: .5rem;
+}
