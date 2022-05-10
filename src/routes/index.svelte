@@ -2,6 +2,7 @@
     import CharacterList from "$lib/components/CharacterList.svelte";
     import CharacterDetails from "$lib/components/CharacterDetails.svelte";
     import {selectedCharacterStore} from "$lib/stores/selectedCharacterStore";
+    import DayOfWeek from "../lib/components/DayOfWeek.svelte";
 </script>
 
 <style>
@@ -12,8 +13,11 @@
     <h1 class="mx-5">LoaTracker</h1>
 </div>
 
-<div class="flex items-start mt-5">
+<div class="flex justify-center mt-5">
+    <DayOfWeek />
+</div>
 
+<div class="flex items-start mt-5">
     <CharacterList />
     {#if $selectedCharacterStore}
         <CharacterDetails />

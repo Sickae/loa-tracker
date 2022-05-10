@@ -6,10 +6,10 @@
 <div id="details-hero" class="w-full bg-base-300 mx-2">
     <CharacterDetailsHeader character="{$selectedCharacterStore}" />
 
-    <div class="tabs">
-        <a class="tab tab-lifted">Chaos</a>
-        <a class="tab tab-lifted tab-active">Guardian Raid</a>
-        <a class="tab tab-lifted">Una's Taks</a>
+    <div class="tabs uppercase font-bold bg-base-300">
+        <a class="tab tab-sm tab-lifted">Chaos</a>
+        <a class="tab tab-sm tab-lifted tab-active">Guardian Raid</a>
+        <a class="tab tab-sm tab-lifted">Una's Taks</a>
     </div>
 </div>
 
