@@ -9,11 +9,12 @@
     $: {
         classIcon = CharacterClass[character?.class]?.toLowerCase();
     }
+
 </script>
 
 {#if character}
     <div id="header" class="p-5 flex">
-        <img src="images/{classIcon}.png" class="class-icon-glow" alt="{classIcon}" />
+        <img src="./{classIcon}.png" class="class-icon-glow" alt="{classIcon}" />
         <h1 class="text-accent font-bold my-auto mx-5">{character.name}</h1>
     </div>
 {/if}

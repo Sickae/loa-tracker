@@ -58,7 +58,7 @@
                 <Icon src="{Trash}" solid class="text-error hover:text-red-500 icon-glow-red" size="32" />
             </div>
         {:else}
-            <img src="images/{classIcon}.png" class="class-icon-glow" alt="{classIcon}" width="32px" height="32px">
+            <img src="./{classIcon}.png" class="class-icon-glow" alt="{classIcon}" width="32px" height="32px">
         {/if}
     </td>
     <td class="text-accent font-bold">{character.name}</td>
