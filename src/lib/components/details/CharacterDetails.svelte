@@ -1,5 +1,5 @@
 <script lang="ts">
-    import CharacterDetailsHeader from "./CharacterDetailsHeader.svelte";
+    import CharacterDetailsHeader from "$lib/components/details/CharacterDetailsHeader.svelte";
     import {selectedCharacterIdStore} from "$lib/stores/selectedCharacterIdStore";
     import {characterStore} from "$lib/stores/characterStore";
     

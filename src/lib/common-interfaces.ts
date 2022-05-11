@@ -1,4 +1,4 @@
-import type {CharacterClass} from "./common-enums";
+import type {CharacterClass} from "$lib/common-enums";
 
 export interface Character {
     id: string,

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import CharacterList from "$lib/components/characterSselection/CharacterList.svelte";
+    import CharacterList from "$lib/components/characterSelection/CharacterList.svelte";
     import CharacterDetails from "$lib/components/details/CharacterDetails.svelte";
     import {selectedCharacterIdStore} from "$lib/stores/selectedCharacterIdStore";
     import DayOfWeek from "$lib/components/DayOfWeek.svelte";
