@@ -1,7 +1,7 @@
 <script lang="ts">
     import CharacterList from "$lib/components/CharacterList.svelte";
     import CharacterDetails from "$lib/components/CharacterDetails.svelte";
-    import {selectedCharacterStore} from "$lib/stores/selectedCharacterStore";
+    import {selectedCharacterIdStore} from "../lib/stores/selectedCharacterIdStore";
     import DayOfWeek from "../lib/components/DayOfWeek.svelte";
 </script>
 
@@ -19,7 +19,7 @@
 
 <div class="flex items-start mt-5">
     <CharacterList />
-    {#if $selectedCharacterStore}
+    {#if $selectedCharacterIdStore}
         <CharacterDetails />
     {/if}
 

@@ -3,12 +3,14 @@
     import CharacterRow from "./CharacterRow.svelte";
     import {characterStore} from "$lib/stores/characterStore";
     import {CharacterClass} from "$lib/common-enums";
+    import {v4 as uuid} from "uuid";
     
     function onClickAdd() {
         characterStore.add({
-            id: (Math.random() * 100000).toString(),
+            id: uuid(),
             name: "New Character",
-            class: CharacterClass.GUNLANCER
+            class: CharacterClass.UNKNOWN,
+            itemLevel: 0,
         });
     }
 </script>

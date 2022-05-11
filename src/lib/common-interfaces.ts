@@ -4,6 +4,7 @@ export interface Character {
     id: string,
     class: CharacterClass,
     name: string,
+    itemLevel: number,
 }
 
 export interface DailyTask {

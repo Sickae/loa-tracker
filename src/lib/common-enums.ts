@@ -1,4 +1,5 @@
 export enum CharacterClass {
+    UNKNOWN,
     ARTILLERIST,
     BARD,
     BERSERKER,

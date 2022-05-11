@@ -1,8 +1,7 @@
 import {writable} from "svelte/store";
-import type {Character} from "$lib/common-interfaces";
 
-function createSelectedCharacterStore(storageKey: string, initialValue: Character | null) {
-    const {subscribe, set} = writable<Character | null>(initialValue);
+function createSelectedCharacterIdStore(storageKey: string, initialValue: string | null) {
+    const {subscribe, set} = writable(initialValue);
 
     return {
         subscribe,
@@ -18,6 +17,6 @@ function createSelectedCharacterStore(storageKey: string, initialValue: Characte
             });
         },
     }
-};
+}
 
-export const selectedCharacterStore = createSelectedCharacterStore('selectedCharacter', null);
+export const selectedCharacterIdStore = createSelectedCharacterIdStore('selectedCharacterId', null);

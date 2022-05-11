@@ -1,52 +1,45 @@
-import {writable} from "svelte/store";
+import {get, writable} from "svelte/store";
 import type {Character} from "$lib/common-interfaces";
-import {CharacterClass} from "$lib/common-enums";
 
 function createCharacterStore(storageKey: string, initialValue: Character[]) {
-    const {subscribe, set, update} = writable(initialValue);
+    const store = writable(initialValue);
 
     return {
-        subscribe,
+        subscribe: store.subscribe,
         add: (character: Character) => {
-            update(characters => {
+            store.update(characters => {
                 return [...characters, character];
             });
         },
         remove: (character: Character) => {
-            update(characters => {
-                console.log('removing', character);
+            store.update(characters => {
                 return characters.filter(c => c.id !== character.id);
             });
+        },
+        update: (character: Character) => {
+            store.update(characters => {
+                return characters.map(c => {
+                    if (c.id === character.id) {
+                        return character;
+                    }
+                    return c;
+                });
+            });
+        },
+        get: (id: string) => {
+            return get(store).find(c => c.id === id);
         },
         useLocalStorage: () => {
             const storedValue = localStorage.getItem(storageKey);
             if (storedValue) {
-                set(JSON.parse(storedValue));
+                store.set(JSON.parse(storedValue));
             }
 
-            subscribe(value => {
+            store.subscribe(value => {
                 localStorage.setItem(storageKey, JSON.stringify(value));
             });
         }
     };
 }
-
-const DUMMY_DATA: Character[] = [
-    {
-        id: 'id1',
-        name: 'Sickae',
-        class: CharacterClass.BERSERKER,
-    },
-    {
-        id: 'id2',
-        name: 'Assasickae',
-        class: CharacterClass.DEATHBLADE,
-    },
-    {
-        id: 'id3',
-        name: 'Chellerae',
-        class: CharacterClass.GUNLANCER,
-    },
-];
     
 export const characterStore = createCharacterStore("characters", []);

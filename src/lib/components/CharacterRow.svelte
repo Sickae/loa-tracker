@@ -1,14 +1,7 @@
-<script context="module" lang="ts">
-    import {writable} from "svelte/store";
-
-    const contextMenuIdStore = writable('');
-    
-</script>
-
 <script lang="ts">
     import type {Character, DailyTask} from "$lib/common-interfaces";
     import {CharacterClass} from "$lib/common-enums";
-    import {selectedCharacterStore} from "$lib/stores/selectedCharacterStore";
+    import {selectedCharacterIdStore} from "$lib/stores/selectedCharacterIdStore";
     import {characterStore} from "$lib/stores/characterStore";
     import {Icon, Trash} from "svelte-hero-icons";
     
@@ -38,28 +31,15 @@
     }
     
     function onSelect() {
-        selectedCharacterStore.set(character);
-    }
-    
-    function onContextMenu() {
-        contextMenuIdStore.set($contextMenuIdStore === character.id ? '' : character.id);     
-    }
-    
-    function onRemove() {
-        characterStore.remove(character);
+        selectedCharacterIdStore.set(character.id);
     }
     
 </script>
 
-<tr class="hover hover:cursor-pointer {$selectedCharacterStore?.id === character.id ? 'active' : ''}" on:click={onSelect} on:contextmenu|preventDefault={onContextMenu}>
+<tr class="hover hover:cursor-pointer {$selectedCharacterIdStore === character.id ? 'active' : ''}" 
+    on:click={onSelect}>
     <td>
-        {#if character.id === $contextMenuIdStore}
-            <div on:click={onRemove}>
-                <Icon src="{Trash}" solid class="text-error hover:text-red-500 icon-glow-red" size="32" />
-            </div>
-        {:else}
-            <img src="./{classIcon}.png" class="class-icon-glow" alt="{classIcon}" width="32px" height="32px">
-        {/if}
+        <img src="./{classIcon}.png" class="class-icon-glow" alt="{classIcon}" width="32px" height="2rem">
     </td>
     <td class="text-accent font-bold">{character.name}</td>
     <td>
