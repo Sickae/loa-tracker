@@ -1,6 +1,6 @@
 <script lang="ts">
-    import CharacterList from "$lib/components/CharacterList.svelte";
-    import CharacterDetails from "$lib/components/CharacterDetails.svelte";
+    import CharacterList from "$lib/components/characterSselection/CharacterList.svelte";
+    import CharacterDetails from "$lib/components/details/CharacterDetails.svelte";
     import {selectedCharacterIdStore} from "$lib/stores/selectedCharacterIdStore";
     import DayOfWeek from "$lib/components/DayOfWeek.svelte";
     import DebugComponent from "$lib/components/DebugComponent.svelte";

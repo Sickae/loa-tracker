@@ -2,9 +2,7 @@
     import type {Character, DailyTask} from "$lib/common-interfaces";
     import {CharacterClass} from "$lib/common-enums";
     import {selectedCharacterIdStore} from "$lib/stores/selectedCharacterIdStore";
-    import {characterStore} from "$lib/stores/characterStore";
-    import {Icon, Trash} from "svelte-hero-icons";
-    
+
     export let character: Character;
     
     if (!character) {
