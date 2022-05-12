@@ -62,9 +62,9 @@
 
 <div class="flex flex-col justify-between" on:keyup={onKeyUp}>
     <input type="text" class="input input-accent input-sm mx-5" value="{character.name}"
-           on:change={onNameChange} />
+           placeholder="Name" on:change={onNameChange} />
     <input type="number" class="input input-accent input-sm mx-5" value="{character.itemLevel}"
-           on:change={onItemLevelChange} />
+           placeholder="Item level" on:change={onItemLevelChange} />
 </div>
 
 <div class="ml-auto flex">

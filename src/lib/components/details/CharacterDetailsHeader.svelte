@@ -28,7 +28,7 @@
         {:else}
             <div>
                 <h1 class="text-accent font-bold my-auto mx-5">{character.name}</h1>
-                <p id="item-level" class="mx-5 text-gray-500">{character.itemLevel}</p>
+                <p id="item-level" class="mx-5 text-gray-500">{character.itemLevel ?? ''}</p>
             </div>
 
             <div on:click={toggleEditMode} class="ml-auto hover:cursor-pointer hover:text-accent" title="Edit">

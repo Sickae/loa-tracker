@@ -8,7 +8,7 @@
 </script>
 
 {#if character}
-    <div id="details-hero" class="w-full bg-base-300 mx-2">
+    <div id="details-hero" class="w-full bg-base-300 mx-2 shadow-md">
         <CharacterDetailsHeader {character} />
     
         <div class="tabs uppercase font-bold bg-base-300">

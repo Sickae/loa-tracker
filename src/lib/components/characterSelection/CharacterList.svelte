@@ -15,7 +15,7 @@
     }
 </script>
 
-<div class="hero w-1/3 mx-2 mb-5">
+<div class="hero w-1/3 mx-2 mb-5 shadow-md">
 
     <table class="table w-full">
         
