@@ -6,10 +6,14 @@
     import {selectedCharacterIdStore} from "../../stores/selectedCharacterIdStore";
 
     export let character: Character;
+    
+    if (!character) {
+        throw new Error("No character provided");
+    }
 
     let editMode = false;
     
-    $: classIcon = CharacterClass[character?.class]?.toLowerCase();
+    $: classIcon = CharacterClass[character.class]?.toLowerCase();
     
     selectedCharacterIdStore.subscribe(() => editMode = false);
 
@@ -21,13 +25,13 @@
 
 {#if character}
     <div id="header" class="p-5 flex">
-        <img src="./{classIcon}.png" class="class-icon-glow" alt="{classIcon}" />
-        
         {#if editMode}
-            <CharacterDetailsHeaderEdit {character} on:close={toggleEditMode} />
+            <CharacterDetailsHeaderEdit bind:character={character} on:close={toggleEditMode} />
         {:else}
+            <img src="./{classIcon}.png" class="class-icon-glow" alt="{classIcon}" />
+            
             <div>
-                <h1 class="text-accent font-bold my-auto mx-5">{character.name}</h1>
+                <h1 class="text-accent font-bold my-auto mx-5 text-title">{character.name}</h1>
                 <p id="item-level" class="mx-5 text-gray-500">{character.itemLevel ?? ''}</p>
             </div>
 

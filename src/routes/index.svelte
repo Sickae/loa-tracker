@@ -7,7 +7,7 @@
 </script>
 
 <div class="bg-base-300 shadow-md flex">
-    <h1 class="mx-5">LoaTracker</h1>
+    <h1 class="mx-5 text-title">LoaTracker</h1>
     
     <div class="ml-auto mr-5 flex items-center">
         <DebugComponent />

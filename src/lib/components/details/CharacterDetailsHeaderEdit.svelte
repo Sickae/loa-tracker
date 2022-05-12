@@ -2,22 +2,28 @@
     import {characterStore} from "$lib/stores/characterStore";
     import type {Character} from "$lib/common-interfaces";
     import {createEventDispatcher} from "svelte";
-    import {CheckCircle, Icon, Trash, XCircle} from "svelte-hero-icons";
+    import {ArrowCircleDown, CheckCircle, Icon, Trash, XCircle} from "svelte-hero-icons";
     import {selectedCharacterIdStore} from "$lib/stores/selectedCharacterIdStore";
+    import {CharacterClass} from "$lib/common-enums";
+    import ClassesModalContent from "$lib/components/details/ClassesModalContent.svelte";
     
     export let character: Character;
     
+    if (!character) {
+        throw new Error("No character provided");
+    }
+    
     const dispatch = createEventDispatcher();
     
-    let editValues = getEditValues();
+    let editValues = {
+        name: character.name,
+        itemLevel: character.itemLevel,
+        class: character.class,
+    };
     let isConfirmDeleteModalOpen = false;
+    let isClassesModalOpen = false;
 
-    function getEditValues() {
-        return {
-            name: character.name,
-            itemLevel: character.itemLevel,
-        }
-    }
+    $: classIcon = CharacterClass[editValues.class].toLowerCase();
 
     function onNameChange() {
         editValues.name = this.value;
@@ -44,6 +50,7 @@
     function applyEdit() {
         character.name = editValues.name;
         character.itemLevel = editValues.itemLevel;
+        character.class = editValues.class;
     }
 
     function deleteCharacter() {
@@ -58,7 +65,21 @@
     function close() {
         dispatch('close');
     }
+    
+    function toggleClassesModal() {
+        isClassesModalOpen = !isClassesModalOpen;
+    }
+    
 </script>
+
+<div class="relative hover:cursor-pointer rounded p-2 hover:bg-accent shadow-md bg-base-100 hover:text-white"
+     width="100px"
+     on:click={toggleClassesModal}>
+    <img src="./{classIcon}.png" class="class-icon-glow" alt="{classIcon}" width="48px" />
+    <div class="absolute left-12 -bottom-2">
+        <Icon src="{ArrowCircleDown}" solid size="1.6rem" />
+    </div>
+</div>
 
 <div class="flex flex-col justify-between" on:keyup={onKeyUp}>
     <input type="text" class="input input-accent input-sm mx-5" value="{character.name}"
@@ -93,6 +114,16 @@
                    on:click={confirmDelete}>
                 Yes
             </label>
+        </div>
+    </div>
+</div>
+
+<input bind:checked={isClassesModalOpen} type="checkbox" id="classes-modal" class="modal-toggle" />
+<div class="modal">
+    <div class="modal-box bg-base-300 shadow-md w-2/3 max-w-4xl">
+        <ClassesModalContent bind:selectedClass={editValues.class} />
+        <div class="modal-action">
+            <label for="classes-modal" class="btn btn-accent">Confirm</label>
         </div>
     </div>
 </div>

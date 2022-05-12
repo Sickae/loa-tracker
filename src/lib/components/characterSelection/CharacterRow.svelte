@@ -9,7 +9,7 @@
         throw new Error('Character was not provided');
     }
 
-    const classIcon = CharacterClass[character.class].toLowerCase();
+    $: classIcon = CharacterClass[character.class].toLowerCase();
     
     const dailyTask: DailyTask = {
         characterId: character.id,

@@ -1,6 +1,7 @@
 <script lang="ts">
     function clearLocalStorage() {
         localStorage.clear();
+        window.location.reload();
     }
 </script>
 
