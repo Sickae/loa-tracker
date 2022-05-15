@@ -2,7 +2,7 @@
 
     import CharacterRow from "$lib/components/characterSelection/CharacterRow.svelte";
     import {characterStore} from "$lib/stores/characterStore";
-    import {CharacterClass} from "$lib/common-enums";
+    import {CharacterClass, DailyTrackerType} from "$lib/common-enums";
     import {v4 as uuid} from "uuid";
     
     function onClickAdd() {

@@ -18,3 +18,10 @@ export enum CharacterClass {
     STRIKER,
     WARDANCER,
 }
+
+export enum DailyTrackerType {
+    CHAOS,
+    GUARDIAN,
+    UNA_TASK,
+    GUILD_DONATION,
+}

@@ -2,7 +2,7 @@
     import {characterStore} from "$lib/stores/characterStore";
     import type {Character} from "$lib/common-interfaces";
     import {createEventDispatcher} from "svelte";
-    import {ArrowCircleDown, CheckCircle, Icon, Trash, XCircle} from "svelte-hero-icons";
+    import {ArrowCircleDown, CheckCircle, Icon, Play, Trash, XCircle} from "svelte-hero-icons";
     import {selectedCharacterIdStore} from "$lib/stores/selectedCharacterIdStore";
     import {CharacterClass} from "$lib/common-enums";
     import ClassesModalContent from "$lib/components/details/ClassesModalContent.svelte";
@@ -76,8 +76,8 @@
      width="100px"
      on:click={toggleClassesModal}>
     <img src="./{classIcon}.png" class="class-icon-glow" alt="{classIcon}" width="48px" />
-    <div class="absolute left-12 -bottom-2">
-        <Icon src="{ArrowCircleDown}" solid size="1.6rem" />
+    <div class="absolute left-12 -bottom-2 rotate-90">
+        <Icon src="{Play}" solid size="1.6rem" />
     </div>
 </div>
 

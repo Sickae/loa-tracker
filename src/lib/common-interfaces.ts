@@ -1,4 +1,5 @@
 import type {CharacterClass} from "$lib/common-enums";
+import type {DailyTrackerType} from "$lib/common-enums";
 
 export interface Character {
     id: string,
@@ -7,11 +8,15 @@ export interface Character {
     itemLevel: number,
 }
 
-export interface DailyTask {
+export interface DailyTracker {
     characterId: string;
-    date: Date;
-    chaos?: number| 0 | 1 | 2,
-    guardian?: number | 0 | 1 | 2,
-    donation: boolean,
-    una?: number,
+    reset: Date;
+    type: DailyTrackerType;
+    progression: number;
+}
+
+export interface DailyTrackerMetadata {
+    name: string;
+    maxProgression: number;
+    iconSrc: string;
 }

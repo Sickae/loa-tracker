@@ -46,7 +46,7 @@
     <div class="flex flex-wrap gap-4 justify-center">
         {#each CLASSES as cl}
             <div class="shadow-xl rounded p-2 bg-base-200 min-w-[13rem]">
-                <h2 class="font-bold text-accent text-title">{cl.name}</h2>
+                <h2 class="font-bold text-accent text-title pl-2">{cl.name}</h2>
                 <ul class="mt-3">
                     {#each cl.subClasses as subCl}
                         <li class="flex gap-3 items-center mb-1 rounded p-2 hover:cursor-pointer hover:text-white 

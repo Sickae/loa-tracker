@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type {Character, DailyTask} from "$lib/common-interfaces";
+    import type {Character, DailyTracker} from "$lib/common-interfaces";
     import {CharacterClass} from "$lib/common-enums";
     import {selectedCharacterIdStore} from "$lib/stores/selectedCharacterIdStore";
 
@@ -11,7 +11,7 @@
 
     $: classIcon = CharacterClass[character.class].toLowerCase();
     
-    const dailyTask: DailyTask = {
+    const dailyTask: DailyTracker = {
         characterId: character.id,
         date: new Date(),
         chaos: Math.random() * 3 - 1,
