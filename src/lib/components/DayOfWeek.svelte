@@ -1,14 +1,14 @@
-<script lang="ts">
-    
+<script lang="ts" context="module">
+    const day = new Date().getDay();
 </script>
 
 <div class="tabs tabs-boxed uppercase font-bold">
-    <a class="tab mx-1">Mon</a>
-    <a class="tab mx-1 tab mx-1 tab-active">Tue</a>
-    <a class="tab mx-1">Wed</a>
-    <a class="tab mx-1">Thu</a>
-    <a class="tab mx-1">Fri</a>
-    <a class="tab mx-1">Sat</a>
-    <a class="tab mx-1">Sun</a>
+    <span class="tab mx-1 {day === 4 ? 'tab-active' : ''}">Thu</span>
+    <span class="tab mx-1 {day === 5 ? 'tab-active' : ''}">Fri</span>
+    <span class="tab mx-1 {day === 6 ? 'tab-active' : ''}">Sat</span>
+    <span class="tab mx-1 {day === 0 ? 'tab-active' : ''}">Sun</span>
+    <span class="tab mx-1 {day === 1 ? 'tab-active' : ''}">Mon</span>
+    <span class="tab mx-1 {day === 2 ? 'tab-active' : ''}">Tue</span>
+    <span class="tab mx-1 {day === 3 ? 'tab-active' : ''}">Wed</span>
 </div>
 
