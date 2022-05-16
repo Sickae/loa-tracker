@@ -19,4 +19,5 @@ export interface DailyTrackerMetadata {
     name: string;
     maxProgression: number;
     iconSrc: string;
+    colorClass: string;
 }

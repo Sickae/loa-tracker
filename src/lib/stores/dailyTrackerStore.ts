@@ -6,10 +6,10 @@ function createDailyTrackerStore(storageKey: string, initialValue: DailyTracker[
     const store = writable(initialValue);
     
     return {
+        subscribe: store.subscribe,
         get: (characterId: string, type: DailyTrackerType) => {
             let tracker = get(store).find(x => x.characterId === characterId && x.type === type);
             if (!tracker) {
-                const now = new Date();
                 tracker = {
                     characterId,
                     type,
@@ -60,22 +60,26 @@ const METADATA: Record<DailyTrackerType, DailyTrackerMetadata> = {
     [DailyTrackerType.CHAOS]: {
         name: 'Chaos Dungeon',
         maxProgression: 2,
-        iconSrc: './chaos_dungeon.png'
+        iconSrc: './chaos_dungeon.png',
+        colorClass: 'bg-error'
     },
     [DailyTrackerType.GUARDIAN]: {
         name: 'Guardian Raid',
         maxProgression: 2,
-        iconSrc: './guardian_raid.png'
+        iconSrc: './guardian_raid.png',
+        colorClass: 'bg-info',
     },
     [DailyTrackerType.UNA_TASK]: {
         name: "Una's Tasks",
         maxProgression: 3,
-        iconSrc: './unas_tasks.png'
+        iconSrc: './unas_tasks.png',
+        colorClass: 'bg-yellow-500',
     },
     [DailyTrackerType.GUILD_DONATION]: {
         name: 'Guild Donation',
         maxProgression: 1,
-        iconSrc: './guild_donation.png'
+        iconSrc: './guild_donation.png',
+        colorClass: 'bg-green-500',
     },
 }
 
