@@ -8,8 +8,10 @@
     export let character: Character;
     
     if (!character) {
-        throw new Error("No character provided");
+        throw new Error("CharacterDetailsHeader: No character provided");
     }
+    
+    const MAX_NAME_LENGTH = 16;
 
     let editMode = false;
     
@@ -31,7 +33,9 @@
             <img src="./{classIcon}.png" class="class-icon-glow" alt="{classIcon}" />
             
             <div>
-                <h1 class="text-accent font-bold my-auto mx-5 text-title">{character.name}</h1>
+                <h1 class="text-accent font-bold my-auto mx-5 text-title">
+                    {character.name.length > MAX_NAME_LENGTH ? `${character.name.substring(0, MAX_NAME_LENGTH)}...` : character.name}
+                </h1>
                 <p id="item-level" class="mx-5 text-gray-500">{character.itemLevel ?? ''}</p>
             </div>
 

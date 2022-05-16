@@ -10,6 +10,8 @@
     if (!character) {
         throw new Error('CharacterRow: Character was not provided');
     }
+    
+    const MAX_NAME_LENGTH = 16;
 
     $: classIcon = CharacterClass[character.class].toLowerCase();
     
@@ -31,12 +33,14 @@
     
 </script>
 
-<tr class="hover:bg-base-100 hover:cursor-pointer {$selectedCharacterIdStore === character.id ? 'active' : ''}" 
+<tr class="hover hover:cursor-pointer {$selectedCharacterIdStore === character.id ? 'active' : ''}" 
     on:click={onSelect}>
     <td>
         <img src="./{classIcon}.png" class="class-icon-glow" alt="{classIcon}" width="32px" height="2rem">
     </td>
-    <td class="text-accent font-bold">{character.name}</td>
+    <td class="text-accent font-bold">
+        {character.name.length > MAX_NAME_LENGTH ? `${character.name.substring(0, MAX_NAME_LENGTH)}...` : character.name}
+    </td>
     
     <TrackerCol type="{DailyTrackerType.CHAOS}" {character} />
     <TrackerCol type="{DailyTrackerType.GUARDIAN}" {character} />
