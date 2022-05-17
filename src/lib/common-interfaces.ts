@@ -13,11 +13,14 @@ export interface DailyTracker {
     reset: Date;
     type: DailyTrackerType;
     progression: number;
+    restBonus?: number;
+    previousRestBonus?: number;
 }
 
 export interface DailyTrackerMetadata {
     name: string;
     maxProgression: number;
+    hasRestBonus: boolean;
     iconSrc: string;
     colorClass: string;
 }

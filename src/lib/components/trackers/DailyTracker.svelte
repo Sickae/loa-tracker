@@ -3,6 +3,7 @@
     import {dailyTrackerStore} from "$lib/stores/dailyTrackerStore";
     import type {Character} from "$lib/common-interfaces";
     import {selectedCharacterIdStore} from "$lib/stores/selectedCharacterIdStore";
+    import RestBonusIndicator from "./RestBonusIndicator.svelte";
 
     export let type: DailyTrackerType = null;
     if (type == null) {
@@ -17,7 +18,7 @@
     const metadata = dailyTrackerStore.getMetadata(type);
     
     let tracker = dailyTrackerStore.get(character.id, type);
-    let progressions = Array<boolean>(metadata.maxProgression).fill(false);
+    let progressions = Array<boolean>(metadata.maxProgression).fill(false);    
 
     selectedCharacterIdStore.subscribe(id => {
         tracker = dailyTrackerStore.get(id, type);
@@ -31,8 +32,7 @@
             onDeselect();
         }
         
-        tracker.progression = progressions.filter(x => x).length;
-        dailyTrackerStore.update(tracker);
+        updateProgression();
     }
 
     function onSelect() {
@@ -56,16 +56,43 @@
             }
         }
     }
+
+    function updateProgression() {
+        tracker.progression = progressions.filter(x => x).length;
+        dailyTrackerStore.update(tracker);
+    }
+    
+    function onDone() {
+        progressions = progressions.map(() => true);
+        updateProgression();
+    }
     
 </script>
 
-<div class="flex items-center gap-4 p-5 rounded-lg bg-base-100 shadow-md">
+<div class="flex items-center gap-4 p-3 rounded-lg bg-base-100 shadow-md">
     <img src="{metadata.iconSrc}" width="32px" />
-    <span class="font-bold text-lg w-1/3">{metadata.name}</span>
-    <div class="flex gap-3">
-        {#each progressions as p, i}
-            <input bind:checked={progressions[i]} type="checkbox" class="checkbox"
-                   on:change="{(e) => onChange(e)}" />
-        {/each}
+    <div class="flex flex-col gap-1">
+        <span class="font-bold">{metadata.name}</span>
+        {#if metadata.hasRestBonus}
+            <div class="flex gap-1">
+                {#each Array(Math.floor(tracker.restBonus / 20)) as _, i}
+                    <RestBonusIndicator restBonus="{20}" />
+                {/each}
+                {#each Array(5 - Math.floor(tracker.restBonus / 20)) as _, i}
+                    <RestBonusIndicator restBonus="{tracker.restBonus % 20 > 0 && i === 0 ? 10 : 0}" />
+                {/each}
+            </div>
+        {/if}
+    </div>
+    <div class="flex gap-3 ml-auto">
+        <div class="flex flex-col gap-2 items-end">
+            <div class="flex gap-2">
+                {#each progressions as p, i}
+                    <input bind:checked={progressions[i]} type="checkbox" class="checkbox checkbox-xs"
+                           on:change="{(e) => onChange(e)}" />
+                {/each}
+            </div>
+            <button class="btn btn-sm btn-success text-white shadow-md" on:click={onDone}>Done</button>
+        </div>
     </div>
 </div>

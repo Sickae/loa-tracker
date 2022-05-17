@@ -15,6 +15,7 @@ function createDailyTrackerStore(storageKey: string, initialValue: DailyTracker[
                     type,
                     progression: 0,
                     reset: calc_reset(),
+                    restBonus: 20,
                 };
                 store.update(trackers => [...trackers, tracker as DailyTracker]);
             }
@@ -46,6 +47,7 @@ function createDailyTrackerStore(storageKey: string, initialValue: DailyTracker[
             store.update(trackers => trackers.map(tracker => {
                 if (new Date(tracker.reset) < new Date()) {
                     tracker.progression = 0;
+                    tracker.previousRestBonus = tracker.restBonus;
                     tracker.reset = calc_reset();
                 }
                 return tracker;
@@ -60,24 +62,28 @@ const METADATA: Record<DailyTrackerType, DailyTrackerMetadata> = {
     [DailyTrackerType.CHAOS]: {
         name: 'Chaos Dungeon',
         maxProgression: 2,
+        hasRestBonus: true,
         iconSrc: './chaos_dungeon.png',
         colorClass: 'bg-error'
     },
     [DailyTrackerType.GUARDIAN]: {
         name: 'Guardian Raid',
         maxProgression: 2,
+        hasRestBonus: true,
         iconSrc: './guardian_raid.png',
         colorClass: 'bg-info',
     },
     [DailyTrackerType.UNA_TASK]: {
         name: "Una's Tasks",
         maxProgression: 3,
+        hasRestBonus: true,
         iconSrc: './unas_tasks.png',
         colorClass: 'bg-yellow-500',
     },
     [DailyTrackerType.GUILD_DONATION]: {
         name: 'Guild Donation',
         maxProgression: 1,
+        hasRestBonus: false,
         iconSrc: './guild_donation.png',
         colorClass: 'bg-green-500',
     },
