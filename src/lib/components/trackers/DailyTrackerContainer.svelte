@@ -6,12 +6,10 @@
     export let character: Character
 </script>
 
-<div class="m-5 flex flex-col">
-    <table>
-        <DailyTracker {character} type="{DailyTrackerType.CHAOS}" />
-        <DailyTracker {character} type="{DailyTrackerType.GUARDIAN}" />
-        <DailyTracker {character} type="{DailyTrackerType.UNA_TASK}" />
-        <DailyTracker {character} type="{DailyTrackerType.GUILD_DONATION}" />
-    </table>
+<div class="m-5 flex flex-col w-2/5 gap-3">
+    <DailyTracker {character} type="{DailyTrackerType.CHAOS}" />
+    <DailyTracker {character} type="{DailyTrackerType.GUARDIAN}" />
+    <DailyTracker {character} type="{DailyTrackerType.UNA_TASK}" />
+    <DailyTracker {character} type="{DailyTrackerType.GUILD_DONATION}" />
 </div>
 

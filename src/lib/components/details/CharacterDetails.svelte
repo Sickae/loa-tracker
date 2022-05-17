@@ -9,7 +9,7 @@
 </script>
 
 {#if character}
-    <div id="details-hero" class="w-full bg-base-300 mx-2 shadow-md">
+    <div id="details-hero" class="w-full bg-base-300 mx-2 shadow-md rounded-lg">
         <CharacterDetailsHeader {character} />
     
         <DailyTrackerContainer bind:character={character} />
@@ -20,6 +20,5 @@
     #details-hero {
         min-height: 81vh;
         max-height: 81vh;
-        border-radius: .5rem;
     }
 </style>

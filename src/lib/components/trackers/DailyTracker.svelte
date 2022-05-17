@@ -59,15 +59,13 @@
     
 </script>
 
-<tr>
-    <div class="flex items-center gap-4 p-2">
-        <img src="{metadata.iconSrc}" width="32px" />
-        <span class="font-bold text-lg w-1/6">{metadata.name}</span>
-        <div class="flex gap-3">
-            {#each progressions as p, i}
-                <input bind:checked={progressions[i]} type="checkbox" class="checkbox"
-                       on:change="{(e) => onChange(e)}" />
-            {/each}
-        </div>
+<div class="flex items-center gap-4 p-5 rounded-lg bg-base-100 shadow-md">
+    <img src="{metadata.iconSrc}" width="32px" />
+    <span class="font-bold text-lg w-1/3">{metadata.name}</span>
+    <div class="flex gap-3">
+        {#each progressions as p, i}
+            <input bind:checked={progressions[i]} type="checkbox" class="checkbox"
+                   on:change="{(e) => onChange(e)}" />
+        {/each}
     </div>
-</tr>
+</div>

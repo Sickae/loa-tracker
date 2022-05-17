@@ -38,7 +38,7 @@
     <td>
         <img src="./{classIcon}.png" class="class-icon-glow" alt="{classIcon}" width="32px" height="2rem">
     </td>
-    <td class="text-accent font-bold">
+    <td class="font-bold {$selectedCharacterIdStore === character.id ? 'text-accent' : ''}">
         {character.name.length > MAX_NAME_LENGTH ? `${character.name.substring(0, MAX_NAME_LENGTH)}...` : character.name}
     </td>
     
